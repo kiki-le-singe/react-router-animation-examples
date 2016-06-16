@@ -1,8 +1,25 @@
-@import 'normalize.css/normalize';
-
-@import 'variables';
-@import 'views';
+html, body, #root, .app, .views {
+  height: 100%;
+}
 
 body {
   background: var(--bodyColor);
+}
+
+h1, h2, ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+img {
+  width: 100%;
 }

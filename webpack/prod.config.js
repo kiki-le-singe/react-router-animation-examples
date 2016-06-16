@@ -65,7 +65,7 @@ const config = {
         loader: ExtractTextPlugin.extract('style', `${cssLoader}!postcss`)
       },
       {
-        test: /common\/styles\/global\/app\.css$/,
+        test: /common\/styles\/global\/core\.css$/,
         include: [srcDir],
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
       },

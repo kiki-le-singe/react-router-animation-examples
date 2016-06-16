@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 // *** STYLES *** //
-import 'common/styles/global/app.css'
+import 'common/styles/global/core.css'
 
 const propTypes = {
   children: PropTypes.object
