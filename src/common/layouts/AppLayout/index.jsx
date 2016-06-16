@@ -1,14 +1,18 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, cloneElement } from 'react'
 import { Link } from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 // *** STYLES *** //
 import 'common/styles/global/core.css'
 
 const propTypes = {
+  location: PropTypes.object,
   children: PropTypes.object
 }
 
 function AppLayout(props) {
+  const { children, location } = props
+
   return (
     <div className="views">
       <ul>
@@ -17,7 +21,15 @@ function AppLayout(props) {
         <li><Link to="/about">About</Link></li>
         <li><Link to="/slide-in-right">SlideInRight</Link></li>
       </ul>
-      {props.children}
+      <ReactCSSTransitionGroup
+        transitionName="slideInRight"
+        transitionEnterTimeout={400}
+        transitionLeaveTimeout={400}
+      >
+        {cloneElement(children, {
+          key: location.pathname
+        })}
+      </ReactCSSTransitionGroup>
     </div>
   )
 }
