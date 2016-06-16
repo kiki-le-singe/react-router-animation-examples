@@ -15,6 +15,7 @@ function AppLayout(props) {
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/hello">Hello</Link></li>
         <li><Link to="/about">About</Link></li>
+        <li><Link to="/slide-in-right">SlideInRight</Link></li>
       </ul>
       {props.children}
     </div>
