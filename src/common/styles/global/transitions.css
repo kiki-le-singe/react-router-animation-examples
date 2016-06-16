@@ -1,0 +1,18 @@
+.slideInRight-enter {
+  right: -100%;
+  transition: right .4s ease-in-out;
+}
+
+.slideInRight-enter.slideInRight-enter-active {
+  right: 0;
+}
+
+.slideInRight-leave {
+  opacity: 0;
+  transition: right .4s ease-in-out;
+}
+
+.slideInRight-leave.slideInRight-leave-active {
+  opacity: -100%;
+}
+
