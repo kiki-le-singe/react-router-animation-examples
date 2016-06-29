@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-export default function SlideInRight() {
+const contextTypes = {
+  router: PropTypes.object
+}
+
+export default function SlideInRight(props, context) {
+  const closeView = () => {
+    context.router.push('/')
+  }
+
   return (
     <div className="page page-slide-in-right">
-      <div className="page-content">
+      <header>
         <h1>SlideInRight</h1>
-      </div>
+        <button onClick={closeView}>Close</button>
+      </header>
     </div>
   )
 }
+
+SlideInRight.contextTypes = contextTypes
