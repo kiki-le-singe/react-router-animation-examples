@@ -16,3 +16,21 @@
   right: -100%;
 }
 
+.slideInLeft-enter {
+  left: -100%;
+  transition: left .4s ease-in-out;
+}
+
+.slideInLeft-enter.slideInLeft-enter-active {
+  left: 0;
+}
+
+.slideInLeft-leave {
+  left: 0;
+  transition: left .4s ease-in-out;
+}
+
+.slideInLeft-leave.slideInLeft-leave-active {
+  left: -100%;
+}
+
