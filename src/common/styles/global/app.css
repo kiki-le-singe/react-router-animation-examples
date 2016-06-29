@@ -18,6 +18,18 @@ ul {
 .page {
   height: 100%;
   width: 100%;
+
+  @nest & header  {
+    overflow: hidden;
+  }
+
+  @nest & h1  {
+    float: left;
+  }
+
+  @nest & button  {
+    float: right;
+  }
 }
 
 img {
