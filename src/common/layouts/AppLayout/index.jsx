@@ -1,4 +1,4 @@
-import React, { PropTypes, cloneElement } from 'react'
+import React, { Component, PropTypes, cloneElement } from 'react'
 import { Link } from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -12,7 +12,6 @@ const propTypes = {
   children: PropTypes.object
 }
 
-function AppLayout(props) {
   const { children, location } = props
 
   return (
@@ -36,6 +35,7 @@ function AppLayout(props) {
       </ReactCSSTransitionGroup>
     </div>
   )
+class AppLayout extends Component {
 }
 
 AppLayout.propTypes = propTypes
