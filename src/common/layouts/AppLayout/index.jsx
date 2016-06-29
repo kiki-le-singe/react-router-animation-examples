@@ -30,7 +30,7 @@ function AppLayout(props) {
         transitionEnterTimeout={400}
         transitionLeaveTimeout={400}
       >
-        {cloneElement(children, {
+        {children && cloneElement(children, {
           key: location.pathname
         })}
       </ReactCSSTransitionGroup>
