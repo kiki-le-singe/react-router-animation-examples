@@ -8,11 +8,11 @@
 }
 
 .slideInRight-leave {
-  opacity: 0;
+  right: 0;
   transition: right .4s ease-in-out;
 }
 
 .slideInRight-leave.slideInRight-leave-active {
-  opacity: -100%;
+  right: -100%;
 }
 
