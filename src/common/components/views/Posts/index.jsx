@@ -25,11 +25,11 @@ export default function Posts(props, context) {
       </header>
       <section className="content posts">
         <ul>
-          <li><Link to="posts/post-1">Post 1</Link></li>
-          <li><Link to="posts/post-2">Post 2</Link></li>
-          <li><Link to="posts/post-3">Post 3</Link></li>
-          <li><Link to="posts/post-4">Post 4</Link></li>
-          <li><Link to="posts/post-5">Post 5</Link></li>
+          <li><Link to="/posts/post-1">Post 1</Link></li>
+          <li><Link to="/posts/post-2">Post 2</Link></li>
+          <li><Link to="/posts/post-3">Post 3</Link></li>
+          <li><Link to="/posts/post-4">Post 4</Link></li>
+          <li><Link to="/posts/post-5">Post 5</Link></li>
         </ul>
       </section>
 

@@ -26,7 +26,9 @@ class AppLayout extends Component {
   }
 
   render() {
-    const { children, location } = this.props
+    const { children, location: { pathname } } = this.props
+    // Only take the first-level part of the path as key, instead of the whole path.
+    const key = pathname.split('/')[1] || 'root'
 
     /* eslint-disable */
     return (
@@ -50,7 +52,7 @@ class AppLayout extends Component {
           transitionLeaveTimeout={400}
         >
           {children && cloneElement(children, {
-            key: location.pathname
+            key
           })}
         </ReactCSSTransitionGroup>
       </div>
