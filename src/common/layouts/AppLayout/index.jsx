@@ -38,7 +38,7 @@ class AppLayout extends Component {
             <Link to="/slide-in-left" onClick={this.setTransitionName.bind(this, 'slideInLeft')}>SlideInLeft</Link>
           </li>
           <li>
-            <Link to="/slide-in-right" onClick={this.setTransitionName.bind(this, 'slideInRight')}>SlideInRight</Link>
+            <Link to="/posts" onClick={this.setTransitionName.bind(this, 'slideInRight')}>Posts</Link>
           </li>
         </ul>
 
