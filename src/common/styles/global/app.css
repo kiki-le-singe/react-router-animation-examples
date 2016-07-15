@@ -32,6 +32,29 @@ ul {
   }
 }
 
+.page-slide-in-right {
+  position: absolute;
+  top: 0;
+}
+
+.page-slide-in-left {
+  background-color: orange;
+  position: absolute;
+  top: 0;
+}
+
+.page-slide-in-up {
+  background-color: blue;
+  position: absolute;
+  bottom: 0;
+}
+
+.page-slide-in-down {
+  background-color: pink;
+  position: absolute;
+  top: 0;
+}
+
 img {
   width: 100%;
 }

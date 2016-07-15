@@ -34,3 +34,39 @@
   left: -100%;
 }
 
+.slideInUp-enter {
+  bottom: -100%;
+  transition: bottom .4s ease-in-out;
+}
+
+.slideInUp-enter.slideInUp-enter-active {
+  bottom: 0;
+}
+
+.slideInUp-leave {
+  bottom: 0;
+  transition: bottom .4s ease-in-out;
+}
+
+.slideInUp-leave.slideInUp-leave-active {
+  bottom: -100%;
+}
+
+.slideInDown-enter {
+  top: -100%;
+  transition: top .4s ease-in-out;
+}
+
+.slideInDown-enter.slideInDown-enter-active {
+  top: 0;
+}
+
+.slideInDown-leave {
+  top: 0;
+  transition: top .4s ease-in-out;
+}
+
+.slideInDown-leave.slideInDown-leave-active {
+  top: -100%;
+}
+
