@@ -32,8 +32,8 @@ class AppLayout extends Component {
     return (
       <div className="views">
         <ul>
-          <li><Link to="/about">About</Link></li>
           <li><Link to="/hello" onClick={this.setTransitionName.bind(this, 'slideInUp')}>Hello</Link></li>
+          <li><Link to="/about" onClick={this.setTransitionName.bind(this, 'slideInDown')}>About</Link></li>
           <li>
             <Link to="/slide-in-left" onClick={this.setTransitionName.bind(this, 'slideInLeft')}>SlideInLeft</Link>
           </li>
