@@ -70,3 +70,20 @@
   top: -100%;
 }
 
+.fadeIn-enter {
+  opacity: 0.01;
+  transition: opacity .4s ease-in;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+}
+
+.fadeIn-leave {
+  opacity: 1;
+  transition: opacity .4s ease-in;
+}
+
+.fadeIn-leave.fadeIn-leave-active {
+  opacity: 0;
+}
