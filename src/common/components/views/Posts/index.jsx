@@ -35,8 +35,6 @@ export default function Posts(props, context) {
 
       <ReactCSSTransitionGroup
         transitionName="slideInRight"
-        transitionAppear
-        transitionAppearTimeout={400}
         transitionEnterTimeout={400}
         transitionLeaveTimeout={400}
       >
