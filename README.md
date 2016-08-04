@@ -2,7 +2,7 @@
 
 This project is just an example using [`React Router`](https://github.com/reactjs/react-router) and [`React' Animations`](https://facebook.github.io/react/docs/animation.html) in a mobile context. So reduce your screen size.
 
-In this example I only use `react-router` but in my opinion we can't only use the router to navigate from one screen to the other. Because obviously the route will change and you'll lose the previous displayed screen. Maybe we could combine the router with the pushing and popping techniques like [`React Native`](https://facebook.github.io/react-native/)'s [`Navigation`](https://facebook.github.io/react-native/docs/navigator-comparison.html) or native mobile apps.
+In this example I only use `react-router` but in my opinion we can't only use the router to navigate from one screen to the other. Because obviously the route will change and you'll lose the previous displayed screen. This is not always the wanted effect in a mobile application. Maybe we could combine the router with the pushing and popping techniques like [`React Native`](https://facebook.github.io/react-native/)'s [`Navigation`](https://facebook.github.io/react-native/docs/navigation.html) or native mobile apps.
 
 ## Installation
 
