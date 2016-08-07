@@ -1,16 +1,16 @@
 {
-  "name": "react-redux-universal-boilerplate",
-  "version": "1.0.0",
+  "name": "react-router-animation-examples",
+  "version": "1.0.1",
   "author": {
     "name": "Kiki le singe"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kiki-le-singe/react-redux-universal-boilerplate.git"
+    "url": "https://github.com/kiki-le-singe/react-router-animation-examples.git"
   },
-  "homepage": "https://github.com/kiki-le-singe/react-redux-universal-boilerplate",
-  "bugs": "https://github.com/kiki-le-singe/react-redux-universal-boilerplate/issues",
+  "homepage": "https://github.com/kiki-le-singe/react-router-animation-examples",
+  "bugs": "https://github.com/kiki-le-singe/react-router-animation-examples/issues",
   "keywords": [
     "boilerplate",
     "react",
@@ -31,7 +31,7 @@
     "isomorphic",
     "universal"
   ],
-  "description": "Get started with a Universal boilerplate containing tools like React, Redux, Koa...",
+  "description": "Simple example using React's Animations with React Router",
   "engines": {
     "node": ">=5.0.0",
     "npm": "^3.3.12"
