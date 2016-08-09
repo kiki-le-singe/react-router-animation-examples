@@ -15,7 +15,6 @@ export default function Hello(props, context) {
         <h1>Hello</h1>
         <button onClick={closeView}>Close</button>
       </header>
-      <div className="page-content">Hello <span className="text">World!</span></div>
     </div>
   )
 }
