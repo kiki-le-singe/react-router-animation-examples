@@ -1,3 +1,26 @@
+@custom-media --tablet-viewport (max-width: 375px);
+
 .page-home {
   color: blue;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+@media (--tablet-viewport) {
+  .alert-info {
+    display: none;
+  }
 }

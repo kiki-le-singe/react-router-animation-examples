@@ -33,6 +33,10 @@ class AppLayout extends Component {
     /* eslint-disable */
     return (
       <div className="views">
+        <div className="alert alert-info">
+          <p><strong>Hello!</strong> For a better experience, reduce your screen or open your Javascript console and simulate mobile devices</p>
+          <p><strong>I will disappear if it's good</strong></p>
+        </div>
         <ul>
           <li><Link to="/hello" onClick={this.setTransitionName.bind(this, 'slideInUp')}>Hello</Link></li>
           <li><Link to="/about" onClick={this.setTransitionName.bind(this, 'slideInDown')}>About</Link></li>
