@@ -1,7 +1,3 @@
-.view__hello {
-  color: green;
-
-  @nest & .text {
-    color: blue;
-  }
+.page-hello {
+  background-color: var(--facebookColor);
 }

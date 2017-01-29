@@ -1,8 +1,49 @@
 @import 'normalize.css';
 
 @import 'variables';
+@import 'app';
+@import 'transitions';
 @import 'views';
 
+html, body, #root, .app, .views {
+  height: 100%;
+}
+
 body {
-  background: var(--bodyColor);
+  background: var(--dropboxColor);
+}
+
+h1, h2, ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 50px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--whiteColor);
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+
+  @nest & header  {
+    overflow: hidden;
+  }
+
+  @nest & h1  {
+    float: left;
+  }
+
+  @nest & button  {
+    float: right;
+  }
 }
