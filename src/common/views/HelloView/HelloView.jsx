@@ -1,18 +1,24 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React, { PropTypes } from 'react'
 
-import Hello from 'common/components/Hello'
+const contextTypes = {
+  router: PropTypes.object
+}
 
-export default function HelloView() {
+function HelloView(props, context) {
+  const closeView = () => {
+    context.router.push('/')
+  }
+
   return (
-    <div className="view view__hello">
-      <Helmet title="Hello" />
-
-      <h2>Hello</h2>
-
-      <div className="view__content">
-        <Hello name={<span className="text">World!</span>} />
-      </div>
+    <div className="page page-slide-in-up page-hello">
+      <header>
+        <h1>Hello</h1>
+        <button onClick={closeView}>Close</button>
+      </header>
     </div>
   )
 }
+
+HelloView.contextTypes = contextTypes
+
+export default HelloView

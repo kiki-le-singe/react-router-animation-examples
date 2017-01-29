@@ -1,15 +1,24 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React, { PropTypes } from 'react'
 
-import titleStyles from 'common/styles/local/title.css'
-import styles from './AboutView.css'
+const contextTypes = {
+  router: PropTypes.object
+}
 
-export default function AboutView() {
+function AboutView(props, context) {
+  const closeView = () => {
+    context.router.push('/')
+  }
+
   return (
-    <div className="view view__about">
-      <Helmet title="About" />
-
-      <h2 className={`${styles.title} ${titleStyles.h2}`}>About</h2>
+    <div className="page page-slide-in-down page-about">
+      <header>
+        <h1>About</h1>
+        <button onClick={closeView}>Close</button>
+      </header>
     </div>
   )
 }
+
+AboutView.contextTypes = contextTypes
+
+export default AboutView

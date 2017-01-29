@@ -1,36 +1,51 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import Helmet from 'react-helmet'
+import React, { PureComponent, PropTypes, cloneElement } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import config from '../../config'
+import Infos from 'common/components/Infos'
+import Nav from 'common/components/Nav'
+import HomeView from 'common/views/HomeView'
 
-const propTypes = {
-  children: PropTypes.object
+export default class AppLayout extends PureComponent {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    children: PropTypes.object,
+  }
+
+  static defaultProps = {
+    children: {},
+  }
+
+  constructor() {
+    super()
+
+    this.state = { transitionName: 'fadeIn' }
+  }
+
+  setTransitionName = (transitionName) => {
+    this.setState({ transitionName })
+  }
+
+  render() {
+    const { children, location: { pathname } } = this.props
+    const key = pathname.split('/')[1] || 'root'
+
+    return (
+      <div className="views">
+        <Infos />
+        <Nav setTransitionName={this.setTransitionName} />
+        <HomeView />
+
+        <ReactCSSTransitionGroup
+          transitionName={this.state.transitionName}
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
+        >
+          {children && cloneElement(children, {
+            key,
+            setTransitionName: this.setTransitionName,
+          })}
+        </ReactCSSTransitionGroup>
+      </div>
+    )
+  }
 }
-const defaultProps = {
-  children: {}
-}
-
-function AppLayout(props) {
-  return (
-    <div className="views">
-      <Helmet {...config.app} />
-
-      <h1>{config.app.title}</h1>
-
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/hello">Hello</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/counter">Counter</Link></li>
-      </ul>
-
-      {props.children}
-    </div>
-  )
-}
-
-AppLayout.propTypes = propTypes
-AppLayout.defaultProps = defaultProps
-
-export default AppLayout

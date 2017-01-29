@@ -1,19 +1,29 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React, { PureComponent, PropTypes } from 'react'
 
 // require the logo image both from client and server
 const logoImage = require('./kiki.jpg')
 
-export default function Home() {
-  return (
-    <div className="view view__home">
-      <Helmet title="Home" />
+export default class HomeView extends PureComponent {
+  // static propTypes = {
+  //   setTransitionName: PropTypes.func
+  // }
+  ///
+  // static defaultProps = {
+  //   setTransitionName: () => {}
+  // }
+  ///
+  // componentDidMount() {
+  //   this.props.setTransitionName('fadeIn')
+  // }
 
-      <h2>Home</h2>
-
-      <div className="view__content">
-        <p><img src={logoImage} alt="Kiki" width="300" height="300" /></p>
+  render() {
+    return (
+      <div className="page page-home">
+        <div className="page-content">
+          <h2>Home</h2>
+          <p><img src={logoImage} alt="Kiki" width="300" height="300" /></p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }

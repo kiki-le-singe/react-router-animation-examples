@@ -37,10 +37,4 @@ if (module.hot) {
   })
 }
 
-if (!__PROD__) {
-  const { whyDidYouUpdate } = require('why-did-you-update')
-
-  whyDidYouUpdate(React)
-}
-
 renderApp()
