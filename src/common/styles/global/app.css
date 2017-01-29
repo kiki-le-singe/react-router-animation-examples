@@ -1,60 +1,8 @@
-html, body, #root, .app, .views {
-  height: 100%;
-}
+@import 'normalize.css';
+
+@import 'variables';
+@import 'views';
 
 body {
   background: var(--bodyColor);
-}
-
-h1, h2, ul {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.page {
-  height: 100%;
-  width: 100%;
-
-  @nest & header  {
-    overflow: hidden;
-  }
-
-  @nest & h1  {
-    float: left;
-  }
-
-  @nest & button  {
-    float: right;
-  }
-}
-
-.page-slide-in-right {
-  position: absolute;
-  top: 0;
-}
-
-.page-slide-in-left {
-  background-color: orange;
-  position: absolute;
-  top: 0;
-}
-
-.page-slide-in-up {
-  background-color: blue;
-  position: absolute;
-  bottom: 0;
-}
-
-.page-slide-in-down {
-  background-color: pink;
-  position: absolute;
-  top: 0;
-}
-
-img {
-  width: 100%;
 }

@@ -2,104 +2,148 @@ import webpack from 'webpack'
 import _debug from 'debug'
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import PurifyCSSPlugin from 'purifycss-webpack-plugin'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
 
 import isomorphicToolsConfig from './isomorphic.tools.config'
 import projectConfig, { paths } from '../config'
 
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(isomorphicToolsConfig)
-const debug = _debug('app:webpack:config:prod')
+const debug = _debug('app:webpack:config:dev')
 const srcDir = paths('src')
-const nodeModulesDir = paths('nodeModules')
 const globalStylesDir = paths('globalStyles')
-const cssLoader = [
-  'css?modules',
-  'sourceMap',
-  'importLoaders=1',
-  'localIdentName=[name]__[local]___[hash:base64:5]'
-].join('&')
+const cssLoaderOptions = (modules = false) => {
+  const options = [
+    'sourceMap',
+    'importLoaders=1',
+    'localIdentName=[name]__[local]___[hash:base64:5]',
+  ]
+
+  if (modules) {
+    options.push('modules')
+  }
+
+  return options.join('&')
+}
 const {
   VENDOR_DEPENDENCIES,
   __CLIENT__,
   __SERVER__,
   __DEV__,
-  __PROD__,
-  __DEBUG__
+  __PROD__
 } = projectConfig
 
 debug('Create configuration.')
 const config = {
+  performance: {
+    hints: 'warning'
+  },
   context: paths('base'),
-  devtool: 'source-ma',
+  devtool: 'source-map',
   entry: {
     app: paths('entryApp'),
-    vendors: VENDOR_DEPENDENCIES
+    vendor: VENDOR_DEPENDENCIES
   },
   output: {
     path: paths('dist'),
-    filename: '[name]-[hash].js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
     publicPath: '/dist/'
   },
   resolve: {
-    root: [srcDir],
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json'],
+    modules: [
+      'src',
+      'node_modules',
+    ],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js[x]?$/,
-        loader: 'babel',
-        exclude: [nodeModulesDir],
+        enforce: 'pre',
+        loader: 'eslint-loader',
         include: [srcDir],
-        query: {
-          cacheDirectory: true
+      },
+      {
+        test: /\.js[x]?$/,
+        loader: 'babel-loader',
+        include: [srcDir],
+        options: {
+          cacheDirectory: true,
         }
       },
+      { test: /\.json$/, loader: 'json-loader' },
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('styles'),
+        test: /\.css$/,
         include: [srcDir],
         exclude: [globalStylesDir],
-        loader: ExtractTextPlugin.extract('style', `${cssLoader}!postcss`)
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: `css-loader?${cssLoaderOptions(true)}!postcss-loader`
+        })
       },
       {
-        test: /common\/styles\/global\/core\.css$/,
+        test: /common\/styles\/global\/app\.css$/,
         include: [srcDir],
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: `css-loader?${cssLoaderOptions()}!postcss-loader`
+        })
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file?name=fonts/[name].[ext]'
-      },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url?limit=10000'
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 10240 }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              optimizationLevel: 7,
+            }
+          }
+        ]
       }
-    ]
+    ],
   },
-  postcss: wPack => ([
-    require('postcss-import')({ addDependencyTo: wPack }),
-    require('postcss-url')(),
-    require('postcss-cssnext')()
-  ]),
   plugins: [
-    new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true
+    // https://webpack.js.org/guides/migrating/#uglifyjsplugin-minimize-loaders
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
+    new CleanWebpackPlugin(['readyToDeploy/static/dist', 'webpack-assets.json'], {
+      root: paths('base')
+    }),
+    new ExtractTextPlugin({ filename: '[name].[contenthash].css', disable: false, allChunks: true }),
+    new PurifyCSSPlugin({
+      basePath: __dirname,
+      purifyOptions: {
+        info: true,
+        minify: true,
+        whitelist: ['*title*', '*h2*'],
+      },
+      paths: [
+        'src/**/*.jsx',
+        'src/**/*.js',
+      ]
     }),
     new webpack.DefinePlugin({
       __CLIENT__,
       __SERVER__,
       __DEV__,
-      __PROD__,
-      __DEBUG__
+      __PROD__
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendors', '[name].[hash].js'),
 
     // optimizations
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -121,9 +165,14 @@ const config = {
       },
       output: {
         comments: false
-      }
+      },
+      sourceMap: true
     }),
-
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+    }),
+    new WebpackMd5Hash(),
     webpackIsomorphicToolsPlugin
   ]
 }
