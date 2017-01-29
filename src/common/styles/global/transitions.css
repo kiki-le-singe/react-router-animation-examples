@@ -1,3 +1,23 @@
+.page-slide-in-right {
+  position: absolute;
+  top: 0;
+}
+
+.page-slide-in-left {
+  position: absolute;
+  top: 0;
+}
+
+.page-slide-in-up {
+  position: absolute;
+  bottom: 0;
+}
+
+.page-slide-in-down {
+  position: absolute;
+  top: 0;
+}
+
 .slideInRight-enter {
   right: -100%;
   transition: right .4s ease-in-out;

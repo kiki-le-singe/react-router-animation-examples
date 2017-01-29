@@ -7,99 +7,176 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kiki-le-singe/react-router-animation-examples.git"
+    "url": "https://github.com/kiki-le-singe/react-router-animation-examples"
   },
   "homepage": "https://github.com/kiki-le-singe/react-router-animation-examples",
   "bugs": "https://github.com/kiki-le-singe/react-router-animation-examples/issues",
   "keywords": [
+    "starter",
     "boilerplate",
     "react",
     "react-router",
+    "react-helmet",
     "redux",
-    "es6",
-    "ES2015",
-    "es7",
+    "es2015",
+    "es2016",
+    "es2017",
     "babel",
     "webpack",
     "hot",
     "reload",
     "hmr",
+    "hot-loader",
     "koa",
-    "cssnext",
     "postcss",
+    "cssnext",
+    "sass",
     "css-modules",
+    "ssr",
     "isomorphic",
     "universal"
   ],
-  "description": "Simple example using React's Animations with React Router",
+  "description": "Get started with a Universal boilerplate containing tools like React, Redux, Koa...",
   "engines": {
-    "node": ">=5.0.0",
-    "npm": "^3.3.12"
+    "node": ">=6.0.0",
+    "npm": "^3.8.6"
   },
+  "main": "src/server/index.js",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "debug": "^2.2.0",
+    "autoprefixer": "^6.7.0",
+    "babel-core": "^6.22.1",
+    "babel-runtime": "^6.20.0",
+    "better-npm-run": "0.0.14",
+    "debug": "^2.6.0",
+    "extract-text-webpack-plugin": "^2.0.0-rc.2",
+    "fs-extra": "^2.0.0",
+    "globby": "^6.1.0",
+    "inquirer": "^3.0.1",
+    "ip": "^1.1.4",
     "koa": "^2.0.0",
+    "koa-compress": "next",
     "koa-convert": "^1.2.0",
-    "koa-proxy": "^0.6.0",
+    "koa-helmet": "^2.0.0",
+    "koa-html-minifier": "^1.0.1",
+    "koa-proxy": "^0.7.0",
     "koa-static": "^3.0.0",
-    "normalize.css": "^4.1.1",
-    "react": "^15.3.1",
-    "react-addons-css-transition-group": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
-    "react-router-redux": "^4.0.2",
+    "koa-static-cache": "^3.2.0",
+    "koa-webpack-dev-middleware": "^1.3.0",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "normalize.css": "^5.0.0",
+    "purifycss-webpack-plugin": "^2.0.3",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-helmet": "^4.0.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
-    "serve-static": "^1.10.0",
-    "webpack-isomorphic-tools": "^2.3.0",
-    "yargs": "^4.7.1"
+    "serialize-javascript": "^1.3.0",
+    "source-map-support": "^0.4.11",
+    "webpack": "^2.2.0",
+    "webpack-isomorphic-tools": "^2.6.6",
+    "webpack-md5-hash": "^0.0.5",
+    "why-did-you-update": "^0.0.8"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
-    "babel-eslint": "^6.0.3",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-istanbul": "^3.1.2",
+    "babel-plugin-system-import-transformer": "^2.4.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "babel-preset-react-optimize": "^1.0.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.9.0",
-    "babel-runtime": "^6.9.0",
-    "copy-webpack-plugin": "^3.0.0",
-    "css-loader": "^0.23.1",
-    "eslint": "^2.11.0",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-loader": "^1.3.0",
-    "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-import": "^1.8.1",
-    "eslint-plugin-jsx-a11y": "^1.2.2",
-    "eslint-plugin-react": "^5.1.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
+    "babel-preset-stage-0": "^6.22.0",
+    "clean-webpack-plugin": "^0.1.15",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "file-loader": "^0.10.0",
+    "image-webpack-loader": "^3.2.0",
     "json-loader": "^0.5.4",
-    "koa-webpack-dev-middleware": "^1.2.1",
-    "koa-webpack-hot-middleware": "^1.0.3",
-    "npm-run-all": "^2.3.0",
-    "postcss-cssnext": "^2.5.2",
-    "postcss-import": "^8.1.2",
-    "postcss-loader": "^0.9.1",
-    "postcss-url": "^5.1.2",
-    "redux-devtools": "^3.3.1",
-    "redux-devtools-dock-monitor": "^1.1.1",
-    "redux-devtools-log-monitor": "^1.0.11",
+    "node-sass": "^4.4.0",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.1",
+    "postcss": "^5.2.11",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-loader": "^1.2.2",
+    "postcss-smart-import": "^0.6.7",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "sass-loader": "^4.1.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1"
+    "webpack-node-externals": "^1.5.4"
   },
   "scripts": {
-    "compile": "NODE_ENV=production babel-node ./node_modules/.bin/webpack --optimize-minimize --progress --config ./webpack/prod.config",
-    "clean:dist": "rm -rf static/dist",
-    "deploy": "npm run clean:dist && npm run compile && npm run prod",
-    "prod": "DEBUG=app:* NODE_PATH=src NODE_ENV=production babel-node src/server/index.js",
-    "start": "npm-run-all --parallel start:client:server start:server",
-    "start:server": "DEBUG=app:* NODE_PATH=src babel-node -- src/server/index.js",
-    "start:client:server": "DEBUG=app:* babel-node webpack/dev.server.js"
+    "build:client": "better-npm-run build:client",
+    "build:server": "better-npm-run build:server",
+    "deploy": "better-npm-run deploy",
+    "start": "better-npm-run start",
+    "dev": "better-npm-run dev",
+    "start:server": "better-npm-run start:server",
+    "start:client:server": "better-npm-run start:client:server",
+    "lint": "eslint src tests --ext .jsx,.js"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "npm-run-all --parallel start:client:server start:server",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "app:*"
+      }
+    },
+    "start": {
+      "command": "npm run dev",
+      "env": {
+        "NODE_ENV": "development",
+        "BABEL_ENV": "server",
+        "DEBUG": "app:*"
+      }
+    },
+    "start:client:server": {
+      "command": "babel-node -- webpack/dev.server",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "app:*"
+      }
+    },
+    "start:server": {
+      "command": "nodemon ./node_modules/.bin/babel-node -- src/server/index",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "src",
+        "DEBUG": "app:*"
+      }
+    },
+    "deploy": {
+      "command": "npm run build:client && npm run build:server"
+    },
+    "build:client": {
+      "command": "./node_modules/.bin/babel-node node_modules/.bin/webpack --progress --config webpack/prod.config",
+      "env": {
+        "NODE_ENV": "production",
+        "NODE_PATH": "src",
+        "DEBUG": "app:*"
+      }
+    },
+    "build:server": {
+      "command": "./node_modules/.bin/babel-node node_modules/.bin/webpack --progress --config webpack/server.config",
+      "env": {
+        "NODE_ENV": "production",
+        "BABEL_ENV": "server",
+        "NODE_PATH": "src",
+        "DEBUG": "app:*"
+      }
+    }
   }
 }

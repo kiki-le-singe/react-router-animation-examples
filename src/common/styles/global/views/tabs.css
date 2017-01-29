@@ -1,0 +1,15 @@
+.tabs {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  height: 150px;
+  background-color: red;
+}
+
+.tab-1 {
+  background-color: var(--youtubeColor);
+}
+
+.tab-2 {
+  background-color: var(--yahooColor);
+}

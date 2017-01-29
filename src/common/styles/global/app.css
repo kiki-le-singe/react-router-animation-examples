@@ -1,9 +1,16 @@
+@import 'normalize.css';
+
+@import 'variables';
+@import 'app';
+@import 'transitions';
+@import 'views';
+
 html, body, #root, .app, .views {
   height: 100%;
 }
 
 body {
-  background: var(--bodyColor);
+  background: var(--dropboxColor);
 }
 
 h1, h2, ul {
@@ -13,6 +20,15 @@ h1, h2, ul {
 
 ul {
   list-style-type: none;
+  margin-bottom: 50px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--whiteColor);
 }
 
 .page {
@@ -30,31 +46,4 @@ ul {
   @nest & button  {
     float: right;
   }
-}
-
-.page-slide-in-right {
-  position: absolute;
-  top: 0;
-}
-
-.page-slide-in-left {
-  background-color: orange;
-  position: absolute;
-  top: 0;
-}
-
-.page-slide-in-up {
-  background-color: blue;
-  position: absolute;
-  bottom: 0;
-}
-
-.page-slide-in-down {
-  background-color: pink;
-  position: absolute;
-  top: 0;
-}
-
-img {
-  width: 100%;
 }
